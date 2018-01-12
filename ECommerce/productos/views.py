@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import loader
 
 from .models import Producto
@@ -18,5 +18,13 @@ def obtenerproductos(request):
         'productos':productos
     }
 
+    return HttpResponse(template.render(context,request))
+
+def detalle_producto(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+    template = loader.get_template('detalle_producto.html')
+    context = {
+        'producto':producto,
+    } 
     return HttpResponse(template.render(context,request))
      

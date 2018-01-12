@@ -1,8 +1,9 @@
 from django.conf.urls import url
 from django.contrib import admin
 
-from .views import obtenerproductos
+from . import views
 
 urlpatterns = [
-    url(r'^productos/', obtenerproductos),
+    url(r'^productos/',views.obtenerproductos),
+    url(r'^detalle_producto/(?P<pk>[0-9]+)/$',views.detalle_producto),
 ]
