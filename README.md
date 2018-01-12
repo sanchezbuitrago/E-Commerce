@@ -1,2 +1,2 @@
 # E-Commerce
-Proyecto de tienda virtual con Django
+Proyecto de tienda virtual con Django.
