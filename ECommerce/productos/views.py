@@ -1,8 +1,9 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import loader
 
 from .models import Producto
+from .forms import ProductoForm
 
 # Create your views here.
 
@@ -28,3 +29,22 @@ def detalle_producto(request, pk):
     } 
     return HttpResponse(template.render(context,request))
      
+def nuevo_producto(request):
+    if request.method == 'POST':
+        form = ProductoForm(request.POST,request.FILES)
+        if form.is_valid():
+            producto = form.save()
+            producto.save()
+            return HttpResponseRedirect('/productos/')
+        else:
+            print "Formulario no valido"
+    else:
+        form = ProductoForm()
+    
+    template = loader.get_template('producto_nuevo.html')
+    context = {
+        'form' : form
+    }
+
+    return HttpResponse(template.render(context,request))
+

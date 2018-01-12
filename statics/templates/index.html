@@ -10,6 +10,7 @@
 </head>
 <body>
     <h1>Hola Mundo</h1>
+    <a href="{% url 'productos.views.nuevo_producto' %}">Nuevo Producto</a>
     <ul>
         {% for pr in productos %}
             <li>
