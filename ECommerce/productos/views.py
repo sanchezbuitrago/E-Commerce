@@ -9,6 +9,11 @@ from .models import Producto
 def obtenerproductos(request):
     productos = Producto.objects.order_by('nombre')
     template = loader.get_template('index.html')
+
+    for pro in productos:
+        print 'producto #'+str(pro.id)
+        print pro.imagen
+
     context = {
         'productos':productos
     }

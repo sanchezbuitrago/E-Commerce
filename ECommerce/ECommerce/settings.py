@@ -116,8 +116,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+#para servir archivos estaticos
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'../statics/')
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = 'media' #para guardar archivos de imagen
+MEDIA_URL = '/media/' #para guardar archivos de imagen
