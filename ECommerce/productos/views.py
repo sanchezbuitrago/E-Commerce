@@ -2,6 +2,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import loader
 
+import sys
+
 from .models import Producto
 from .forms import ProductoForm
 
@@ -16,7 +18,8 @@ def obtenerproductos(request):
         print pro.imagen
 
     context = {
-        'productos':productos
+        'productos':productos,
+        'host' : request.get_host()
     }
 
     return HttpResponse(template.render(context,request))
@@ -48,3 +51,11 @@ def nuevo_producto(request):
 
     return HttpResponse(template.render(context,request))
 
+def getimagen(request, image):
+    template = loader.get_template('imagen.html')
+    context = {
+        'image': (image),
+        'host' : request.get_host()
+    }
+    print request.get_host()
+    return HttpResponse(template.render(context,request))
