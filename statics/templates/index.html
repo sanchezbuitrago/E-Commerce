@@ -10,6 +10,12 @@
 </head>
 <body>
     <h1>Hola Mundo</h1>
+    {% if user.is_authenticated %}
+        <h3>{{ user.username }}</h3>
+        <a href="{% url "usuarios:logout" %}">Logout</a>
+    {% else %}
+        <a href="{% url "usuarios:authentication" %}">Login</a>
+    {% endif %}
     <a href="{% url 'productos.views.nuevo_producto' %}">Nuevo Producto</a>
     <ul>
         {% for pr in productos %}

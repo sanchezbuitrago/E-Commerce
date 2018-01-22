@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',#referencia cruzada
     'productos.apps.ProductosConfig',
-    'clientes.apps.ClientesConfig',
+    'usuarios.apps.UsuariosConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -134,3 +134,5 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = 'media' #para guardar archivos de imagen
 MEDIA_URL = '/media/' #para guardar archivos de imagen
+
+AUTH_USER_MODEL = 'usuarios.CustomUser' #para extender el modelo de usuarios de django
